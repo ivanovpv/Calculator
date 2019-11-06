@@ -9,11 +9,49 @@
     tools:context=".MainActivity">
     <TextView
         android:id="@+id/textLine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width= "match_parent"
+        android:layout_height="24pt"
         android:layout_margin="24dp"
         >
     </TextView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:layout_margin="12dp"
+        >
+        <Button
+            android:id="@+id/button_memory_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="M+"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/button_memory_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="M-"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/button_memory_result"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="MR"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/button_memory_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="MC"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
