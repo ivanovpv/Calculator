@@ -28,6 +28,7 @@
             android:layout_height="match_parent"
             android:text="M+"
             android:layout_weight="1"
+            android:onClick="AddToMemory"
             />
         <Button
             android:id="@+id/button_memory_minus"
@@ -35,6 +36,7 @@
             android:layout_height="match_parent"
             android:text="M-"
             android:layout_weight="1"
+            android:onClick="SubtractFromMemory"
             />
         <Button
             android:id="@+id/button_memory_result"
@@ -42,6 +44,7 @@
             android:layout_height="match_parent"
             android:text="MR"
             android:layout_weight="1"
+            android:onClick="ComputeMemory"
             />
         <Button
             android:id="@+id/button_memory_clear"
@@ -49,6 +52,7 @@
             android:layout_height="match_parent"
             android:text="MC"
             android:layout_weight="1"
+            android:onClick="ClearMemory"
             />
 
     </LinearLayout>
@@ -119,7 +123,7 @@
             android:layout_weight="1"
             />
         <Button
-            android:id="@+id/buttonMultiply"
+            android:id="@+id/button_multiply"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="X"
