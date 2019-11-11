@@ -9,10 +9,14 @@
     tools:context=".MainActivity">
     <TextView
         android:id="@+id/textLine"
+        android:textAlignment="textEnd"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
         android:layout_width= "match_parent"
         android:layout_height="24pt"
         android:layout_margin="24dp"
-        >
+        tools:text="@string/placeholder"
+        tools:ignore="RtlCompat">
     </TextView>
 
     <LinearLayout
@@ -28,7 +32,6 @@
             android:layout_height="match_parent"
             android:text="M+"
             android:layout_weight="1"
-            android:onClick="AddToMemory"
             />
         <Button
             android:id="@+id/button_memory_minus"
@@ -36,7 +39,6 @@
             android:layout_height="match_parent"
             android:text="M-"
             android:layout_weight="1"
-            android:onClick="SubtractFromMemory"
             />
         <Button
             android:id="@+id/button_memory_result"
@@ -44,7 +46,6 @@
             android:layout_height="match_parent"
             android:text="MR"
             android:layout_weight="1"
-            android:onClick="ComputeMemory"
             />
         <Button
             android:id="@+id/button_memory_clear"
@@ -52,7 +53,6 @@
             android:layout_height="match_parent"
             android:text="MC"
             android:layout_weight="1"
-            android:onClick="ClearMemory"
             />
 
     </LinearLayout>
@@ -220,17 +220,17 @@
             android:layout_weight="1"
             />
         <Button
-            android:id="@+id/button_left_par"
+            android:id="@+id/button00"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="("
+            android:text="00"
             android:layout_weight="1"
             />
         <Button
-            android:id="@+id/button_right_par"
+            android:id="@+id/button_decimal_point"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text=")"
+            android:text="."
             android:layout_weight="1"
             />
         <Button

@@ -15,70 +15,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button button;
         super.onCreate(savedInstanceState);
-        memory = .0;
+        memory = 0.0d;
         setContentView(R.layout.activity_main);
         textLine=this.findViewById(R.id.textLine);
 
-        Button button0=this.findViewById(R.id.button0);
-        button0.setOnClickListener(this);
-        Button button1=this.findViewById(R.id.button1);
-        button1.setOnClickListener(this);
-        Button button2=this.findViewById(R.id.button2);
-        button2.setOnClickListener(this);
-        Button button3=this.findViewById(R.id.button3);
-        button3.setOnClickListener(this);
-        Button button4=this.findViewById(R.id.button4);
-        button4.setOnClickListener(this);
-        Button button5=this.findViewById(R.id.button5);
-        button5.setOnClickListener(this);
-        Button button6=this.findViewById(R.id.button6);
-        button6.setOnClickListener(this);
-        Button button7=this.findViewById(R.id.button7);
-        button7.setOnClickListener(this);
-        Button button8=this.findViewById(R.id.button8);
-        button8.setOnClickListener(this);
-        Button button9=this.findViewById(R.id.button9);
-        button9.setOnClickListener(this);
+        button=this.findViewById(R.id.button0);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button1);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button2);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button3);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button4);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button5);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button6);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button7);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button8);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button9);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button_c);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button_memory_clear);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button_memory_plus);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button_memory_minus);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button_memory_result);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button00);
+        button.setOnClickListener(this);
+        button=this.findViewById(R.id.button_decimal_point);
+        button.setOnClickListener(this);
 
-        Button button_c=this.findViewById(R.id.button_c);
-        button_c.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch(view.getId()) {
-            case R.id.button0:
-                textLine.setText("1");
-                break;
-            default:
-                Log.i(TAG, "Pressed button with id="+view.getId());
-        }
-        textLine=this.findViewById(R.id.textLine);
-
-        Button button0=this.findViewById(R.id.button0);
-        button0.setOnClickListener(this);
-        Button button1=this.findViewById(R.id.button1);
-        button1.setOnClickListener(this);
-        Button button2=this.findViewById(R.id.button2);
-        button2.setOnClickListener(this);
-        Button button3=this.findViewById(R.id.button3);
-        button3.setOnClickListener(this);
-        Button button4=this.findViewById(R.id.button4);
-        button4.setOnClickListener(this);
-        Button button5=this.findViewById(R.id.button5);
-        button5.setOnClickListener(this);
-        Button button6=this.findViewById(R.id.button6);
-        button6.setOnClickListener(this);
-        Button button7=this.findViewById(R.id.button7);
-        button7.setOnClickListener(this);
-        Button button8=this.findViewById(R.id.button8);
-        button8.setOnClickListener(this);
-        Button button9=this.findViewById(R.id.button9);
-        button9.setOnClickListener(this);
-
-        Button button_c=this.findViewById(R.id.button_c);
-        button_c.setOnClickListener(this);
     }
 
     @Override
@@ -86,6 +63,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()) {
             case R.id.button0:
                 textLine.append("0");
+                break;
+            case R.id.button00:
+                textLine.append("00");
+                break;
+            case R.id.button_decimal_point:
+                textLine.append(".");
                 break;
             case R.id.button1:
                 textLine.append("1");
@@ -117,29 +100,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_c:
                 textLine.setText("");
                 break;
+            case R.id.button_memory_clear:
+                clearMemory();
+                break;
+            case R.id.button_memory_minus:
+                subtractFromMemory();
+                break;
+            case R.id.button_memory_plus:
+                addToMemory();
+                break;
+            case R.id.button_memory_result:
+                computeMemory();
+                break;
             default:
                 Log.i(TAG, "Pressed button with id="+view.getId());
         }
     }
 
-    public void AddToMemory(View view) {
-        memory = memory + Double.parseDouble(String.valueOf(textLine));
+    public void addToMemory() {
+        memory = memory + parseTextLine();
         textLine.setText("");
     }
 
-    public void ClearMemory(View view) {
+    public void clearMemory() {
         memory = 0;
     }
 
-    public void SubtractFromMemory(View view) {
-        memory = memory - Integer.parseInt(String.valueOf(textLine));
+    public void subtractFromMemory() {
+        memory = memory - parseTextLine();
         textLine.setText("");
     }
 
-    public void ComputeMemory(View view) {
-        textLine.setText(Double.toString(memory));
+    public void computeMemory() {
+        textLine.setText(""+memory);
         memory = 0;
     }
+
+    private double parseTextLine() {
+        String text=textLine.getText().toString().trim();
+        double result=0.0;
+        if(!text.isEmpty()) {
+            try {
+                result = Double.parseDouble(text);
+            } catch (NumberFormatException ex) {
+                Log.d(TAG, "Invalid string=" + text, ex);
+            }
+        }
+        return result;
+    }
+
 }
 
-;
